@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\CalculadoraController;
+use App\Http\Controllers\ImagenesController;
+use App\Http\Controllers\InicioController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [InicioController::class,'index']);
 
-Route::get('/calculadora', [CalculadoraController::class, 'index'])->name('calculadora.index');
+Route::get('/calculadora', [CalculadoraController::class, 'index'])->name('calculadora');
+
+Route::get('/imagenes',[ImagenesController::class,'index'])->name('imagenes');
+
+Route::get('/imagenesDetalle/{id}', [ImagenesController::class, 'show'])->name('detallesimagen');
